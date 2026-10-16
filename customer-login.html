@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Login | ZIKAA</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .customer-login-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 18px;
+      background:
+        linear-gradient(rgba(5, 25, 30, .48), rgba(5, 25, 30, .68)),
+        url("images/login-background.png") center / cover no-repeat;
+    }
+
+    .customer-card {
+      width: 100%;
+      max-width: 440px;
+      padding: 35px;
+      background: rgba(255, 248, 233, .97);
+      border: 1px solid rgba(255, 255, 255, .7);
+      border-radius: 24px;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, .25);
+    }
+
+    .customer-logo {
+      display: block;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: 3px;
+    }
+
+    .customer-logo span {
+      color: #08aeb8;
+    }
+
+    .customer-label {
+      margin-top: 20px;
+      text-align: center;
+      color: #087c83;
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+    }
+
+    .customer-card h1 {
+      margin: 12px 0 5px;
+      text-align: center;
+      font-size: 2rem;
+    }
+
+    .customer-subtitle {
+      margin-bottom: 25px;
+      color: #68797c;
+      text-align: center;
+    }
+
+    .customer-form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .customer-form label {
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    .customer-form input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #dcebed;
+      border-radius: 10px;
+      background: white;
+    }
+
+    .customer-submit,
+    .google-customer-btn {
+      width: 100%;
+      padding: 13px;
+      border-radius: 10px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .customer-submit {
+      margin-top: 8px;
+      border: none;
+      background: #62e6e8;
+      color: #101719;
+    }
+
+    .google-customer-btn {
+      margin-top: 14px;
+      border: 1px solid #dcebed;
+      background: white;
+      color: #101719;
+    }
+
+    .customer-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 18px;
+      color: #68797c;
+      font-size: .85rem;
+    }
+
+    .customer-divider::before,
+    .customer-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #dcebed;
+    }
+
+    .customer-message {
+      min-height: 24px;
+      margin: 15px 0 0;
+      color: #40575a;
+      font-size: .9rem;
+      overflow-wrap: anywhere;
+    }
+
+    .customer-links {
+      margin-top: 20px;
+      text-align: center;
+      font-size: .9rem;
+    }
+
+    .customer-links a {
+      color: #087c83;
+      font-weight: 700;
+    }
+
+    .customer-back {
+      position: fixed;
+      top: 20px;
+      left: 22px;
+      color: white;
+      font-weight: 700;
+    }
+
+    @media (max-width: 480px) {
+      .customer-card {
+        padding: 25px 20px;
+      }
+
+      .customer-back {
+        top: 12px;
+        left: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="customer-back" href="index.html">← Back to ZIKAA</a>
+
+  <main class="customer-login-page">
+    <section class="customer-card">
+      <a href="index.html" class="customer-logo">ZIKAA<span>.</span></a>
+
+      <div class="customer-label">YOUR CREATIVE WORLD</div>
+      <h1>Welcome back!</h1>
+      <p class="customer-subtitle">
+        Sign in to continue exploring ZIKAA.
+      </p>
+
+      <form id="customerLoginForm" class="customer-form">
+        <label for="customerEmail">Email address</label>
+        <input
+          id="customerEmail"
+          type="email"
+          autocomplete="email"
+          placeholder="you@example.com"
+          required
+        >
+
+        <label for="customerPassword">Password</label>
+        <input
+          id="customerPassword"
+          type="password"
+          autocomplete="current-password"
+          placeholder="Enter your password"
+          required
+        >
+
+        <button class="customer-submit" type="submit">
+          Sign In
+        </button>
+      </form>
+
+      <div class="customer-divider">or</div>
+
+      <button id="customerGoogleBtn" class="google-customer-btn" type="button">
+        Continue with Google
+      </button>
+
+      <p id="customerLoginMessage" class="customer-message"
+         role="status" aria-live="polite"></p>
+
+      <div class="customer-links">
+        <p>New to ZIKAA? <a href="customer-register.html">Create an account</a></p>
+        <p><a href="#" id="forgotPasswordLink">Forgot password?</a></p>
+        <p><a href="index.html">Continue browsing as a guest</a></p>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="js/customer-auth.js"></script>
+</body>
+</html>

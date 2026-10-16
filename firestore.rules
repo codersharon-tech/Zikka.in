@@ -1,0 +1,67 @@
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Only your authorized Google account is the owner.
+    function isOwner() {
+      return request.auth != null
+        && request.auth.uid == "REPLACE_WITH_OWNER_UID";
+    }
+
+    // Products, projects and blogs
+    match /{collectionName}/{documentId} {
+      allow read: if collectionName in ['products', 'projects', 'blogs']
+        && (
+          isOwner()
+          || resource.data.published == true
+        );
+
+      allow create, update, delete: if isOwner()
+        && collectionName in ['products', 'projects', 'blogs'];
+    }
+
+    // Public visitors can submit feedback.
+    // Only the owner can read, update or delete feedback.
+    match /feedback/{feedbackId} {
+      allow create: if request.resource.data.keys().hasOnly([
+          'name', 'message', 'createdAt'
+        ])
+        && request.resource.data.keys().hasAll([
+          'name', 'message', 'createdAt'
+        ])
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.name.size() <= 100
+        && request.resource.data.message is string
+        && request.resource.data.message.size() > 0
+        && request.resource.data.message.size() <= 2000
+        && request.resource.data.createdAt == request.time;
+
+      allow read, update, delete: if isOwner();
+    }
+
+    // Project requirements are private to the owner.
+    match /projectRequests/{requestId} {
+      allow create: if request.resource.data.keys().hasOnly([
+          'name', 'email', 'details', 'createdAt'
+        ])
+        && request.resource.data.keys().hasAll([
+          'name', 'email', 'details', 'createdAt'
+        ])
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.name.size() <= 100
+        && request.resource.data.email is string
+        && request.resource.data.email.size() > 0
+        && request.resource.data.email.size() <= 254
+        && request.resource.data.details is string
+        && request.resource.data.details.size() > 0
+        && request.resource.data.details.size() <= 5000
+        && request.resource.data.createdAt == request.time;
+
+      allow read, update, delete: if isOwner();
+    }
+  }
+}

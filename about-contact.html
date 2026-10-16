@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About & Contact | ZIKAA</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar">
+      <a class="logo" href="index.html">ZIKAA</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="projects.html">Projects</a>
+        <a href="blogs.html">Blogs</a>
+        <a class="active" href="about-contact.html">About & Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-heading">
+      <span class="eyebrow">Get to know us</span>
+      <h1>About ZIKAA</h1>
+      <p>A creative space for ideas, products and meaningful projects.</p>
+    </section>
+
+    <section class="section">
+      <div class="panel">
+        <h2>Our Story</h2>
+        <p>
+          ZIKAA is a creative brand focused on bringing ideas to life through
+          thoughtful products, inspiring projects and engaging stories.
+          We believe good design combines beauty, purpose and simplicity.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="panel">
+        <h2>Tell Us About Your Project</h2>
+        <p>Your project details are submitted privately to the ZIKAA owner.</p>
+
+        <form id="projectRequestForm">
+          <label for="requestName">Your name</label>
+          <input id="requestName" name="name" type="text"
+                 maxlength="100" required>
+
+          <label for="requestEmail">Email address</label>
+          <input id="requestEmail" name="email" type="email"
+                 maxlength="254" required>
+
+          <label for="requestDetails">Project requirements</label>
+          <textarea id="requestDetails" name="details" rows="5"
+                    maxlength="5000" required
+                    placeholder="Describe your idea and requirements"></textarea>
+
+          <button type="submit">Send Project Request</button>
+          <p id="requestStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="panel">
+        <h2>Share Your Feedback</h2>
+        <p>We appreciate your thoughts and suggestions.</p>
+
+        <form id="feedbackForm">
+          <label for="feedbackName">Your name</label>
+          <input id="feedbackName" name="name" type="text"
+                 maxlength="100" required>
+
+          <label for="feedbackMessage">Your feedback</label>
+          <textarea id="feedbackMessage" name="message" rows="4"
+                    maxlength="2000" required></textarea>
+
+          <button type="submit">Submit Feedback</button>
+          <p id="feedbackStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="currentYear"></span> ZIKAA. All rights reserved.</p>
+  </footer>
+
+  <script src="js/common.js"></script>
+  <script type="module" src="js/public-pages.js"></script>
+</body>
+</html>
